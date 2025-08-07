@@ -6,32 +6,36 @@
 /*   By: ahabbard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 07:47:39 by ahabbard          #+#    #+#             */
-/*   Updated: 2025/08/07 08:13:53 by ahabbard         ###   ########.fr       */
+/*   Updated: 2025/08/07 22:11:44 by ahabbard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_print_com2(void;
+void	ft_print_com2(void)
 {
-	int	i;
-	int	j;
-	
+	int		i;
+	int		j;
+	char	c[5];
+
 	i = 0;
-	j = 0;
-	while (i <= 99)
+	while (i <= 98)
 	{
+		j = i + 1;
 		while (j <= 99)
 		{
-			write(1, &i, 1);
-			write(1, &j, 1);
-			if (!( i == 99 && j == 99))
+			c[0] = i / 10 + 48;
+			c[1] = i % 10 + 48;
+			c[2] = ' ';
+			c[3] = j / 10 + 48;
+			c[4] = j % 10 + 48;
+			write(1, c, 5);
+			if (!(i == 98 && j == 99))
 				write(1, ", ", 2);
 			j++;
 		}
 		i++;
 	}
-	write(1, "\n", 1);
 }
 
 int	main(void)
